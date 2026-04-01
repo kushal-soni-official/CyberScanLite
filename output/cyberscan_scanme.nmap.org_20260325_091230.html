@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CyberScan Lite – Security Report</title>
+    <!-- Google Fonts: Inter + Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- DESIGN SYSTEM (glassmorphism) ---------- */
+        :root {
+            --bg-gradient: radial-gradient(circle at 10% 20%, #0a0c10 0%, #07090e 100%);
+            --card-bg: rgba(20, 24, 32, 0.85);
+            --card-border: rgba(48, 54, 68, 0.5);
+            --text-primary: #f0f3fa;
+            --text-secondary: #9ca3b3;
+            --accent-cyan: #00ffc3;
+            --accent-cyan-rgb: 0, 255, 195;
+            --accent-blue: #3b82f6;
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(0, 255, 195, 0.2);
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.2);
+            --shadow-md: 0 12px 30px rgba(0,0,0,0.25);
+            --radius-md: 1rem;
+            --radius-lg: 1.5rem;
+            --transition: 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Main container */
+        .report-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Header with glass effect */
+        .report-header {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .report-header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #fff, var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Summary cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .summary-card i {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.75rem;
+        }
+
+        .summary-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-card .value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            word-break: break-word;
+        }
+
+        /* Ports table */
+        .ports-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .ports-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .ports-section h2 i {
+            font-size: 1.4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 0.5rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th {
+            background: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        tbody tr {
+            transition: background var(--transition);
+        }
+
+        tbody tr:hover {
+            background: rgba(0, 255, 195, 0.05);
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Footer */
+        .report-footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="report-container">
+    <div class="report-header">
+        <h1><i class="fas fa-shield-alt"></i> CyberScan Lite | Scan Report</h1>
+        <p>Generated with precision & transparency</p>
+    </div>
+
+    <!-- Summary Cards (using Jinja variables) -->
+    <div class="summary-grid">
+        <div class="summary-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Target</h3>
+            <div class="value">scanme.nmap.org</div>
+        </div>
+        <div class="summary-card">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Date</h3>
+            <div class="value">2026-03-25 09:12:32</div>
+        </div>
+        <div class="summary-card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Port Range</h3>
+            <div class="value">1 to 1024</div>
+        </div>
+        <div class="summary-card">
+            <i class="fab fa-linux"></i>
+            <h3>OS Guess</h3>
+            <div class="value">Linux/Unix (TTL=45)</div>
+        </div>
+    </div>
+
+    <!-- Open Ports Table -->
+    <div class="ports-section">
+        <h2><i class="fas fa-door-open"></i> Open Ports</h2>
+        
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Port</th>
+                        <th>Service</th>
+                        <th>Version</th>
+                        <th>OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>22</td>
+                        <td>ssh</td>
+                        <td>OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13</td>
+                        <td>Linux/Unix (TTL=45)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>80</td>
+                        <td>unknown</td>
+                        <td></td>
+                        <td>Linux/Unix (TTL=45)</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <div class="report-footer">
+        <p>&copy; 2026 CyberScan Lite | All scans are simulated for educational purposes</p>
+    </div>
+</div>
+</body>
+</html>
