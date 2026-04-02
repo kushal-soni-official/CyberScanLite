@@ -5,10 +5,10 @@
 ## Preview 
 
 ###1. Main Windows
-![Main_Window](Screenshots/main_window.png)  
+![Main_Window](screenshots/main_window.png)
 
 ###2. Html Report 
-![html_report](Screenshots/html_report.png)
+![html_report](sreenshots/html_report.png)
 
 ## Features
 
