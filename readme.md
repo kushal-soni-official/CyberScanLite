@@ -4,11 +4,11 @@
 
 ## Preview 
 
-###1. Main Windows
+1. Main Windows
 ![Main_Window](screenshots/main_window.png)
 
-###2. Html Report 
-![html_report](sreenshots/html_report.png)
+2. Html Report 
+![html_report](screenshots/html_report.png)
 
 ## Features
 
