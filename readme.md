@@ -61,3 +61,39 @@
 ## License
 
 This project is open‑source and available under the MIT License.
+
+---
+
+## ⚠️ DISCLAIMER & LEGAL NOTICE
+
+**IMPORTANT: Unauthorized network scanning is ILLEGAL.**
+
+### Authorized Use Only
+This tool is provided **ONLY for:**
+- ✅ Security research and learning
+- ✅ Testing networks **you own or have written permission to scan**
+- ✅ Authorized penetration testing engagements
+- ✅ Cybersecurity students learning network basics
+
+### Prohibited Use
+Do **NOT** use this tool to:
+- ❌ Scan networks you don't own
+- ❌ Perform port scanning without explicit written permission
+- ❌ Conduct unauthorized penetration testing
+- ❌ Any malicious purpose
+
+### Legal Consequences
+Unauthorized port scanning is illegal in most jurisdictions:
+- **India:** ITA Section 66 (Jail + ₹5 Lakh fine)
+- **USA:** CFAA (Up to 10 years prison)
+- **EU:** Similar cybercrime laws apply
+
+### Data Stays Local
+- All scans remain on your computer
+- No data is uploaded or shared
+- Results are stored locally only
+- **However:** Unauthorized use is still illegal
+
+---
+
+**By using this tool, you agree to use it only for authorized testing of systems you own or have explicit written permission to scan.**
