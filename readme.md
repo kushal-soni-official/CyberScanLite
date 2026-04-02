@@ -15,7 +15,8 @@
 ## Requirements
 
 - Python 3.10 or higher
-- Dependencies listed in `requirements.txt`:
+- Dependencies listed in
+  - `requirements.txt`:
   - `ttkbootstrap`
   - `pyyaml`
   - `jinja2`
