@@ -2,6 +2,14 @@
 
 **CyberScan Lite** is a lightweight, user‑friendly network scanner that does not require external tools like Nmap. It scans a single target (IP or hostname) for open ports, identifies services via banner grabbing, guesses the operating system using packet analysis, and exports results in HTML and JSON formats.
 
+## Preview 
+
+###1. Main Windows
+![Main_Window](Screenshots/main_window.png)  
+
+###2. Html Report 
+![html_report](Screenshots/html_report.png)
+
 ## Features
 
 - Simple, clean GUI built with `tkinter` and `ttkbootstrap`.
