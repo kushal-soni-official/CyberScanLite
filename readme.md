@@ -2,6 +2,8 @@
 
 **CyberScan Lite** is a lightweight, user‑friendly network scanner that does not require external tools like Nmap. It scans a single target (IP or hostname) for open ports, identifies services via banner grabbing, guesses the operating system using packet analysis, and exports results in HTML and JSON formats.
 
+---
+
 ## Preview 
 
 1. Main Windows
@@ -9,6 +11,8 @@
 
 2. Html Report 
 ![html_report](screenshots/html_report.png)
+
+---
 
 ## Features
 
@@ -20,6 +24,8 @@
 - Real‑time results table with progress bar.
 - Export to JSON and styled HTML report.
 
+---
+
 ## Requirements
 
 - Python 3.10 or higher
@@ -28,6 +34,8 @@
   - `ttkbootstrap`
   - `pyyaml`
   - `jinja2`
+
+---
 
 ## Installation
 
@@ -43,6 +51,8 @@
    ```bash
    python main.py
    ```
+
+   ---
    
 ## Usage
 
@@ -55,12 +65,16 @@
 5. Stop a running scan with the **Stop** button.
 6. After scan, use the **Export** buttons to save results.
 
+---
+
 ## Limitations
 
 - OS fingerprinting is based only on TTL from ping; it may be inaccurate behind firewalls or load balancers.
 - Service detection uses banner grabbing; encrypted services (HTTPS) may not yield a readable banner.
 - The scanner uses a TCP connect scan; it will not detect filtered ports (they appear as closed).
 - No support for scanning multiple targets or CIDR ranges.
+
+---
 
 ## Customization
 
